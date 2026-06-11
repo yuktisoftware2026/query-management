@@ -1,0 +1,62 @@
+/* Define CSS Variables */
+:root {
+  --font-oxanium: "Oxanium", sans-serif;
+  --font-roboto: "Roboto", sans-serif;
+
+  /* Font Weights */
+  --font-weight-bold: 700;
+  --font-weight-light: 100;
+
+  /* Font Sizes */
+  --font-size-header: 1.8rem;
+  --font-size-logo: 40vmin;
+
+  /* Colors */
+  --color-primary: #FCA311; /* Bright orange */
+  --color-link: #61dafb;
+  --color-shadow: rgba(0, 0, 0, 0.5);
+
+  /* Shadows */
+  --text-shadow: 1px 1px 2px var(--color-shadow);
+
+  /* Animation Duration */
+  --spin-duration: 20s;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Oxanium:wght@200..800&display=swap');
+
+.header-oxanium {
+  font-family: var(--font-oxanium);
+  font-optical-sizing: auto;
+  font-weight: var(--font-weight-bold); /* Using bold weight */
+}
+
+.header-title {
+  font-weight: var(--font-weight-bold); /* Bold weight */
+  font-size: var(--font-size-header); /* Header font size */
+  color: var(--color-primary); /* Primary color (bright orange) */
+  text-shadow: var(--text-shadow); /* Shadow */
+}
+
+.header-title.header-oxanium {
+  font-family: var(--font-oxanium);
+  font-optical-sizing: auto;
+}
+
+.App {
+  text-align: center;
+  padding: 0; /* Remove padding from the App component */
+}
+
+.App-logo {
+  height: var(--font-size-logo);
+  pointer-events: none;
+}
+
+ 
+ 
+ 
+
+ 
