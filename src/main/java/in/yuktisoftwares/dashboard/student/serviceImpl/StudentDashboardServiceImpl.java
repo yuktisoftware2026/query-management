@@ -8,6 +8,10 @@ import in.yuktisoftwares.dashboard.student.service.StudentDashboardService;
 import in.yuktisoftwares.studentBatch.repository.StudentBatchRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import in.yuktisoftwares.assignment.repository.AssignmentRepository;
+import in.yuktisoftwares.studentBatch.entity.StudentBatchEntity;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -17,12 +21,51 @@ public class StudentDashboardServiceImpl
     private final StudentBatchRepository studentBatchRepository;
     private final SubmissionRepository submissionRepository;
     private final AttendanceRepository attendanceRepository;
+    private final AssignmentRepository assignmentRepository;
 
     @Override
     public StudentDashboardResponseDTO getDashboard(Long studentId) {
 
+        long enrolledBatches =
+                studentBatchRepository.countByStudentId(
+                        studentId);
+
+        long submittedAssignments =
+                submissionRepository.countByStudentId(
+                        studentId);
+
+        List<StudentBatchEntity> mappings =
+                studentBatchRepository.findByStudentId(
+                        studentId);
+
+        List<Long> batchIds =
+                mappings.stream()
+                        .map(StudentBatchEntity::getBatchId)
+                        .toList();
+        System.out.println("BatchIds = " + batchIds);
+
+        long totalAssignments = 0;
+
+        if (!batchIds.isEmpty()) {
+
+            totalAssignments =
+                    assignmentRepository.countByBatchIdIn(
+                            batchIds);
+        }
+        System.out.println("Total Assignments = " + totalAssignments);
+
+
+        long pendingAssignments =
+                totalAssignments - submittedAssignments;
+
+        if (pendingAssignments < 0) {
+            pendingAssignments = 0;
+        }
+        
+
         long totalAttendance =
-                attendanceRepository.countByStudentId(studentId);
+                attendanceRepository.countByStudentId(
+                        studentId);
 
         long presentAttendance =
                 attendanceRepository.countByStudentIdAndStatus(
@@ -34,17 +77,16 @@ public class StudentDashboardServiceImpl
         if (totalAttendance > 0) {
 
             attendancePercentage =
-                    (presentAttendance * 100.0) /
-                            totalAttendance;
+                    (presentAttendance * 100.0)
+                            / totalAttendance;
         }
 
         return StudentDashboardResponseDTO.builder()
-                .enrolledBatches(
-                        studentBatchRepository.countByStudentId(
-                                studentId))
+                .enrolledBatches(enrolledBatches)
                 .submittedAssignments(
-                        submissionRepository.countByStudentId(
-                                studentId))
+                        submittedAssignments)
+                .pendingAssignments(
+                        pendingAssignments)
                 .attendancePercentage(
                         attendancePercentage)
                 .build();

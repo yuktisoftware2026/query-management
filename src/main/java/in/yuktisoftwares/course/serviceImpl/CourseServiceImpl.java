@@ -6,6 +6,7 @@ import in.yuktisoftwares.course.entity.CourseEntity;
 import in.yuktisoftwares.course.entity.CourseStatus;
 import in.yuktisoftwares.course.repository.CourseRepository;
 import in.yuktisoftwares.course.service.CourseService;
+import in.yuktisoftwares.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +34,7 @@ public class CourseServiceImpl implements CourseService {
     public CourseResponseDTO getCourseById(Long id) {
 
         CourseEntity course = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Course not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Course not found"));
 
         return map(course);
     }
@@ -52,7 +53,7 @@ public class CourseServiceImpl implements CourseService {
                                           CourseRequestDTO request) {
 
         CourseEntity course = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Course not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Course not found"));
 
         course.setCourseName(request.getCourseName());
         course.setDescription(request.getDescription());
@@ -64,7 +65,7 @@ public class CourseServiceImpl implements CourseService {
     public void deactivateCourse(Long id) {
 
         CourseEntity course = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Course not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Course not found"));
 
         course.setStatus(CourseStatus.INACTIVE);
 

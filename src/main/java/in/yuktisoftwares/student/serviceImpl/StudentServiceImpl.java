@@ -1,5 +1,6 @@
 package in.yuktisoftwares.student.serviceImpl;
 
+import in.yuktisoftwares.exception.ResourceNotFoundException;
 import in.yuktisoftwares.student.dto.StudentRequestDTO;
 import in.yuktisoftwares.student.dto.StudentResponseDTO;
 import in.yuktisoftwares.student.entity.StudentEntity;
@@ -32,7 +33,7 @@ public class StudentServiceImpl implements StudentService {
     public StudentResponseDTO getStudentById(Long id) {
 
         StudentEntity student = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Student not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Student not found"));
 
         return map(student);
     }
@@ -51,7 +52,7 @@ public class StudentServiceImpl implements StudentService {
                                             StudentRequestDTO request) {
 
         StudentEntity student = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Student not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Student not found"));
 
         student.setName(request.getName());
         student.setEmail(request.getEmail());
@@ -64,7 +65,7 @@ public class StudentServiceImpl implements StudentService {
     public void deactivateStudent(Long id) {
 
         StudentEntity student = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Student not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Student not found"));
 
         student.setStatus("INACTIVE");
 

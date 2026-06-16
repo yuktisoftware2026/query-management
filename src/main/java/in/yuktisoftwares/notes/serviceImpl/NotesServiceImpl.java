@@ -1,5 +1,6 @@
 package in.yuktisoftwares.notes.serviceImpl;
 
+import in.yuktisoftwares.exception.ResourceNotFoundException;
 import in.yuktisoftwares.notes.dto.NotesRequestDTO;
 import in.yuktisoftwares.notes.dto.NotesResponseDTO;
 import in.yuktisoftwares.notes.entity.NotesEntity;
@@ -7,6 +8,8 @@ import in.yuktisoftwares.notes.repository.NotesRepository;
 import in.yuktisoftwares.notes.service.NotesService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import in.yuktisoftwares.batch.repository.BatchRepository;
+import in.yuktisoftwares.module.repository.ModuleRepository;
 
 import java.util.List;
 
@@ -16,10 +19,26 @@ public class NotesServiceImpl
         implements NotesService {
 
     private final NotesRepository repository;
+    private final ModuleRepository moduleRepository;
+    private final BatchRepository batchRepository;
 
     @Override
     public NotesResponseDTO createNotes(
             NotesRequestDTO request) {
+
+        if (!moduleRepository.existsById(
+                request.getModuleId())) {
+
+            throw new ResourceNotFoundException(
+                    "Module not found");
+        }
+
+        if (!batchRepository.existsById(
+                request.getBatchId())) {
+
+            throw new ResourceNotFoundException(
+                    "Batch not found");
+        }
 
         NotesEntity notes =
                 NotesEntity.builder()
@@ -39,7 +58,7 @@ public class NotesServiceImpl
 
         return map(repository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException("Notes not found")));
+                        new ResourceNotFoundException("Notes not found")));
     }
 
     @Override
@@ -56,10 +75,25 @@ public class NotesServiceImpl
             Long id,
             NotesRequestDTO request) {
 
+        if (!moduleRepository.existsById(
+                request.getModuleId())) {
+
+            throw new ResourceNotFoundException(
+                    "Module not found");
+        }
+
+        if (!batchRepository.existsById(
+                request.getBatchId())) {
+
+            throw new ResourceNotFoundException(
+                    "Batch not found");
+        }
+
         NotesEntity notes =
                 repository.findById(id)
                         .orElseThrow(() ->
-                                new RuntimeException("Notes not found"));
+                                new ResourceNotFoundException(
+                                        "Notes not found"));
 
         notes.setModuleId(request.getModuleId());
         notes.setBatchId(request.getBatchId());
@@ -77,7 +111,7 @@ public class NotesServiceImpl
         NotesEntity notes =
                 repository.findById(id)
                         .orElseThrow(() ->
-                                new RuntimeException("Notes not found"));
+                                new ResourceNotFoundException("Notes not found"));
 
         notes.setStatus("INACTIVE");
 

@@ -1,5 +1,6 @@
 package in.yuktisoftwares.mentor.serviceImpl;
 
+import in.yuktisoftwares.exception.ResourceNotFoundException;
 import in.yuktisoftwares.mentor.dto.MentorRequestDTO;
 import in.yuktisoftwares.mentor.dto.MentorResponseDTO;
 import in.yuktisoftwares.mentor.entity.MentorEntity;
@@ -31,7 +32,7 @@ public class MentorServiceImpl implements MentorService {
     @Override
     public MentorResponseDTO getMentorById(Long id) {
         return map(repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Mentor not found")));
+                .orElseThrow(() -> new ResourceNotFoundException("Mentor not found")));
     }
 
     @Override
@@ -45,7 +46,7 @@ public class MentorServiceImpl implements MentorService {
     @Override
     public MentorResponseDTO updateMentor(Long id, MentorRequestDTO request) {
         MentorEntity mentor = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Mentor not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Mentor not found"));
 
         mentor.setName(request.getName());
         mentor.setEmail(request.getEmail());
@@ -58,7 +59,7 @@ public class MentorServiceImpl implements MentorService {
     @Override
     public void deactivateMentor(Long id) {
         MentorEntity mentor = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Mentor not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Mentor not found"));
         mentor.setStatus("INACTIVE");
         repository.save(mentor);
     }

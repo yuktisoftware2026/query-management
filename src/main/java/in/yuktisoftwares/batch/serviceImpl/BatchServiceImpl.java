@@ -6,6 +6,7 @@ import in.yuktisoftwares.batch.entity.BatchEntity;
 import in.yuktisoftwares.batch.entity.BatchStatus;
 import in.yuktisoftwares.batch.repository.BatchRepository;
 import in.yuktisoftwares.batch.service.BatchService;
+import in.yuktisoftwares.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +40,7 @@ public class BatchServiceImpl implements BatchService {
 
         return map(repository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException("Batch not found")));
+                        new ResourceNotFoundException("Batch not found")));
     }
 
     @Override
@@ -57,7 +58,7 @@ public class BatchServiceImpl implements BatchService {
 
         BatchEntity batch = repository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException("Batch not found"));
+                        new ResourceNotFoundException("Batch not found"));
 
         batch.setCourseId(request.getCourseId());
         batch.setBatchName(request.getBatchName());
@@ -75,7 +76,7 @@ public class BatchServiceImpl implements BatchService {
 
         BatchEntity batch = repository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException("Batch not found"));
+                        new ResourceNotFoundException("Batch not found"));
 
         batch.setStatus(BatchStatus.ARCHIVED);
 

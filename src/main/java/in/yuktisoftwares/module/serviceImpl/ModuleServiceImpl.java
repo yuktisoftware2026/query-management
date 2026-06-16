@@ -1,5 +1,6 @@
 package in.yuktisoftwares.module.serviceImpl;
 
+import in.yuktisoftwares.exception.ResourceNotFoundException;
 import in.yuktisoftwares.module.dto.ModuleRequestDTO;
 import in.yuktisoftwares.module.dto.ModuleResponseDTO;
 import in.yuktisoftwares.module.entity.ModuleEntity;
@@ -35,7 +36,7 @@ public class ModuleServiceImpl implements ModuleService {
     public ModuleResponseDTO getModuleById(Long id) {
 
         return map(repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Module not found")));
+                .orElseThrow(() -> new ResourceNotFoundException("Module not found")));
     }
 
     @Override
@@ -52,7 +53,7 @@ public class ModuleServiceImpl implements ModuleService {
                                           ModuleRequestDTO request) {
 
         ModuleEntity module = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Module not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Module not found"));
 
         module.setCourseId(request.getCourseId());
         module.setTitle(request.getTitle());
@@ -66,7 +67,7 @@ public class ModuleServiceImpl implements ModuleService {
     public void completeModule(Long id) {
 
         ModuleEntity module = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Module not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Module not found"));
 
         module.setStatus(ModuleStatus.COMPLETED);
 

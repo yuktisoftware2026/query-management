@@ -7,9 +7,8 @@ import lombok.Data;
 @Builder
 public class StudentDashboardResponseDTO {
 
-    private Long enrolledBatches;
-
-    private Long submittedAssignments;
-
-    private Double attendancePercentage;
+    private long enrolledBatches;
+    private long submittedAssignments;
+    private long pendingAssignments;
+    private double attendancePercentage;
 }

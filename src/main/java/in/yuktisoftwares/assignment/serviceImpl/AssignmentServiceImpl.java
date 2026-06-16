@@ -5,8 +5,11 @@ import in.yuktisoftwares.assignment.dto.AssignmentResponseDTO;
 import in.yuktisoftwares.assignment.entity.AssignmentEntity;
 import in.yuktisoftwares.assignment.repository.AssignmentRepository;
 import in.yuktisoftwares.assignment.service.AssignmentService;
+import in.yuktisoftwares.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import in.yuktisoftwares.batch.repository.BatchRepository;
+import in.yuktisoftwares.module.repository.ModuleRepository;
 
 import java.util.List;
 
@@ -16,10 +19,26 @@ public class AssignmentServiceImpl
         implements AssignmentService {
 
     private final AssignmentRepository repository;
+    private final ModuleRepository moduleRepository;
+    private final BatchRepository batchRepository;
 
     @Override
     public AssignmentResponseDTO createAssignment(
             AssignmentRequestDTO request) {
+
+        if (!moduleRepository.existsById(
+                request.getModuleId())) {
+
+            throw new ResourceNotFoundException(
+                    "Module not found");
+        }
+
+        if (!batchRepository.existsById(
+                request.getBatchId())) {
+
+            throw new ResourceNotFoundException(
+                    "Batch not found");
+        }
 
         AssignmentEntity assignment =
                 AssignmentEntity.builder()
@@ -39,7 +58,7 @@ public class AssignmentServiceImpl
 
         return map(repository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException("Assignment not found")));
+                        new ResourceNotFoundException("Assignment not found")));
     }
 
     @Override
@@ -56,10 +75,25 @@ public class AssignmentServiceImpl
             Long id,
             AssignmentRequestDTO request) {
 
+        if (!moduleRepository.existsById(
+                request.getModuleId())) {
+
+            throw new ResourceNotFoundException(
+                    "Module not found");
+        }
+
+        if (!batchRepository.existsById(
+                request.getBatchId())) {
+
+            throw new ResourceNotFoundException(
+                    "Batch not found");
+        }
+
         AssignmentEntity assignment =
                 repository.findById(id)
                         .orElseThrow(() ->
-                                new RuntimeException("Assignment not found"));
+                                new ResourceNotFoundException(
+                                        "Assignment not found"));
 
         assignment.setModuleId(request.getModuleId());
         assignment.setBatchId(request.getBatchId());
@@ -77,7 +111,7 @@ public class AssignmentServiceImpl
         AssignmentEntity assignment =
                 repository.findById(id)
                         .orElseThrow(() ->
-                                new RuntimeException("Assignment not found"));
+                                new ResourceNotFoundException("Assignment not found"));
 
         assignment.setStatus("INACTIVE");
 

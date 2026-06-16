@@ -5,8 +5,11 @@ import in.yuktisoftwares.classSession.dto.ClassSessionResponseDTO;
 import in.yuktisoftwares.classSession.entity.ClassSessionEntity;
 import in.yuktisoftwares.classSession.repository.ClassSessionRepository;
 import in.yuktisoftwares.classSession.service.ClassSessionService;
+import in.yuktisoftwares.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import in.yuktisoftwares.batch.repository.BatchRepository;
+import in.yuktisoftwares.module.repository.ModuleRepository;
 
 import java.util.List;
 
@@ -16,10 +19,26 @@ public class ClassSessionServiceImpl
         implements ClassSessionService {
 
     private final ClassSessionRepository repository;
+    private final BatchRepository batchRepository;
+    private final ModuleRepository moduleRepository;
 
     @Override
     public ClassSessionResponseDTO createSession(
             ClassSessionRequestDTO request) {
+
+        if (!batchRepository.existsById(
+                request.getBatchId())) {
+
+            throw new ResourceNotFoundException(
+                    "Batch not found");
+        }
+
+        if (!moduleRepository.existsById(
+                request.getModuleId())) {
+
+            throw new ResourceNotFoundException(
+                    "Module not found");
+        }
 
         ClassSessionEntity session =
                 ClassSessionEntity.builder()
@@ -34,13 +53,12 @@ public class ClassSessionServiceImpl
 
         return map(repository.save(session));
     }
-
     @Override
     public ClassSessionResponseDTO getSessionById(Long id) {
 
         return map(repository.findById(id)
                 .orElseThrow(() ->
-                        new RuntimeException("Session not found")));
+                        new ResourceNotFoundException("Session not found")));
     }
 
     @Override
@@ -57,10 +75,25 @@ public class ClassSessionServiceImpl
             Long id,
             ClassSessionRequestDTO request) {
 
+        if (!batchRepository.existsById(
+                request.getBatchId())) {
+
+            throw new ResourceNotFoundException(
+                    "Batch not found");
+        }
+
+        if (!moduleRepository.existsById(
+                request.getModuleId())) {
+
+            throw new ResourceNotFoundException(
+                    "Module not found");
+        }
+
         ClassSessionEntity session =
                 repository.findById(id)
                         .orElseThrow(() ->
-                                new RuntimeException("Session not found"));
+                                new ResourceNotFoundException(
+                                        "Session not found"));
 
         session.setBatchId(request.getBatchId());
         session.setModuleId(request.getModuleId());
@@ -75,7 +108,13 @@ public class ClassSessionServiceImpl
     @Override
     public void deleteSession(Long id) {
 
-        repository.deleteById(id);
+        ClassSessionEntity session =
+                repository.findById(id)
+                        .orElseThrow(() ->
+                                new ResourceNotFoundException(
+                                        "Session not found"));
+
+        repository.delete(session);
     }
 
     private ClassSessionResponseDTO map(

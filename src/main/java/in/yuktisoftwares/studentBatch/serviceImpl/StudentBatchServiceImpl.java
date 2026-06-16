@@ -1,5 +1,8 @@
 package in.yuktisoftwares.studentBatch.serviceImpl;
 
+import in.yuktisoftwares.batch.repository.BatchRepository;
+import in.yuktisoftwares.student.repository.StudentRepository;
+import in.yuktisoftwares.exception.ResourceNotFoundException;
 import in.yuktisoftwares.studentBatch.dto.StudentBatchRequestDTO;
 import in.yuktisoftwares.studentBatch.dto.StudentBatchResponseDTO;
 import in.yuktisoftwares.studentBatch.entity.StudentBatchEntity;
@@ -16,10 +19,27 @@ import java.util.List;
 public class StudentBatchServiceImpl implements StudentBatchService {
 
     private final StudentBatchRepository repository;
+    private final StudentRepository studentRepository;
+    private final BatchRepository batchRepository;
+
 
     @Override
     public StudentBatchResponseDTO assignStudent(
             StudentBatchRequestDTO request) {
+
+        if (!studentRepository.existsById(
+                request.getStudentId())) {
+
+            throw new ResourceNotFoundException(
+                    "Student not found");
+        }
+
+        if (!batchRepository.existsById(
+                request.getBatchId())) {
+
+            throw new ResourceNotFoundException(
+                    "Batch not found");
+        }
 
         StudentBatchEntity mapping =
                 StudentBatchEntity.builder()
@@ -46,7 +66,7 @@ public class StudentBatchServiceImpl implements StudentBatchService {
         StudentBatchEntity mapping =
                 repository.findById(id)
                         .orElseThrow(() ->
-                                new RuntimeException("Mapping not found"));
+                                new ResourceNotFoundException("Mapping not found"));
 
         mapping.setStatus(StudentBatchStatus.LEFT);
 

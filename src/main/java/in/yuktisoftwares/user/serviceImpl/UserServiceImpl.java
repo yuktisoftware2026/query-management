@@ -1,5 +1,6 @@
 package in.yuktisoftwares.user.serviceImpl;
 
+import in.yuktisoftwares.exception.ResourceNotFoundException;
 import in.yuktisoftwares.user.dto.UserRequestDTO;
 import in.yuktisoftwares.user.dto.UserResponseDTO;
 import in.yuktisoftwares.user.entity.UserEntity;
@@ -34,11 +35,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponseDTO getUserById(Long id) {
-        return map(repository.findById(id).orElseThrow());
+
+        UserEntity user =
+                repository.findById(id)
+                        .orElseThrow(() ->
+                                new ResourceNotFoundException(
+                                        "User not found"));
+
+        return map(user);
     }
 
     @Override
     public List<UserResponseDTO> getAllUsers() {
+
         return repository.findAll()
                 .stream()
                 .map(this::map)
@@ -46,9 +55,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserResponseDTO updateUser(Long id, UserRequestDTO request) {
+    public UserResponseDTO updateUser(Long id,
+                                      UserRequestDTO request) {
 
-        UserEntity user = repository.findById(id).orElseThrow();
+        UserEntity user =
+                repository.findById(id)
+                        .orElseThrow(() ->
+                                new ResourceNotFoundException(
+                                        "User not found"));
 
         user.setName(request.getName());
         user.setEmail(request.getEmail());
@@ -62,7 +76,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deactivateUser(Long id) {
 
-        UserEntity user = repository.findById(id).orElseThrow();
+        UserEntity user =
+                repository.findById(id)
+                        .orElseThrow(() ->
+                                new ResourceNotFoundException(
+                                        "User not found"));
 
         user.setStatus(UserStatus.INACTIVE);
 

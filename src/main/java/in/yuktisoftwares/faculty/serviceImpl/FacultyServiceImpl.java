@@ -1,5 +1,6 @@
 package in.yuktisoftwares.faculty.serviceImpl;
 
+import in.yuktisoftwares.exception.ResourceNotFoundException;
 import in.yuktisoftwares.faculty.dto.FacultyRequestDTO;
 import in.yuktisoftwares.faculty.dto.FacultyResponseDTO;
 import in.yuktisoftwares.faculty.entity.FacultyEntity;
@@ -31,7 +32,7 @@ public class FacultyServiceImpl implements FacultyService {
     @Override
     public FacultyResponseDTO getFacultyById(Long id) {
         return map(repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Faculty not found")));
+                .orElseThrow(() -> new ResourceNotFoundException("Faculty not found")));
     }
 
     @Override
@@ -45,7 +46,7 @@ public class FacultyServiceImpl implements FacultyService {
     @Override
     public FacultyResponseDTO updateFaculty(Long id, FacultyRequestDTO request) {
         FacultyEntity faculty = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Faculty not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Faculty not found"));
 
         faculty.setName(request.getName());
         faculty.setEmail(request.getEmail());
@@ -58,7 +59,7 @@ public class FacultyServiceImpl implements FacultyService {
     @Override
     public void deactivateFaculty(Long id) {
         FacultyEntity faculty = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Faculty not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Faculty not found"));
         faculty.setStatus("INACTIVE");
         repository.save(faculty);
     }
