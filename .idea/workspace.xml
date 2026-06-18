@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="588ee79d-dfdb-4eb5-8edf-d90a532df6d3" name="Changes" comment="CHange in Folder Structure" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="AnnotationType" />
+        <option value="package-info" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;yuktisoftware2026&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/yuktisoftware2026/query-management&quot;,
+    &quot;accountId&quot;: &quot;838013f8-7d7d-4cf9-a9a6-5d743ef356f8&quot;
+  }
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="3F1d0u8msI7jtAS5916FwUEDECI" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.AssignmentApplication.executor": "Run",
+    "JUnit.All in query-management.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Narayan_Internship_Work/query-management",
+    "onboarding.tips.debug.path": "C:/Narayan_Internship_Work/query-management/data/src/Main.java",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.annotationProcessors"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="in.yuktisoftwares.assignment.dto" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Narayan_Internship_Work\query-management\src\main\java\in\yuktisoftwares" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Narayan_Internship_Work\query-management\src\main\java\in\yuktisoftwares" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.All in query-management">
+    <configuration name="AssignmentApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="in.yuktisoftwares.AssignmentApplication" />
+      <module name="Yukti_LMS" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="in.yuktisoftwares.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in query-management" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <module name="Yukti_LMS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.AssignmentApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="588ee79d-dfdb-4eb5-8edf-d90a532df6d3" name="Changes" comment="" />
+      <created>1781246290366</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1781246290366</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Completed LMS backend MVP core modules&#10;&#10;Modules:&#10;- User&#10;- Faculty&#10;- Mentor&#10;- Student&#10;- Course&#10;- Batch&#10;- Module&#10;- StudentBatch&#10;- Notes&#10;- Assignment&#10;- Submission&#10;- ClassSession&#10;- Attendance&#10;&#10;Dashboards:&#10;- Admin Dashboard&#10;- Faculty Dashboard&#10;- Mentor Dashboard&#10;- Student Dashboard&#10;&#10;Additional:&#10;- Swagger Integration&#10;- H2 Database Configuration&#10;- Repository Enhancements&#10;&#10;Tested:&#10;- CRUD APIs&#10;- Dashboard APIs&#10;- Swagger UI&#10;- H2 Console">
+      <option name="closed" value="true" />
+      <created>1781588420629</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1781588420629</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Completed LMS backend MVP core modules&#10;&#10;Modules:&#10;- User&#10;- Faculty&#10;- Mentor&#10;- Student&#10;- Course&#10;- Batch&#10;- Module&#10;- StudentBatch&#10;- Notes&#10;- Assignment&#10;- Submission&#10;- ClassSession&#10;- Attendance&#10;&#10;Dashboards:&#10;- Admin Dashboard&#10;- Faculty Dashboard&#10;- Mentor Dashboard&#10;- Student Dashboard&#10;&#10;Additional:&#10;- Swagger Integration&#10;- H2 Database Configuration&#10;- Repository Enhancements&#10;&#10;Tested:&#10;- CRUD APIs&#10;- Dashboard APIs&#10;- Swagger UI&#10;- H2 Console">
+      <option name="closed" value="true" />
+      <created>1781588465373</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1781588465373</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Completed LMS backend MVP core modules&#10;&#10;Modules:&#10;- User&#10;- Faculty&#10;- Mentor&#10;- Student&#10;- Course&#10;- Batch&#10;- Module&#10;- StudentBatch&#10;- Notes&#10;- Assignment&#10;- Submission&#10;- ClassSession&#10;- Attendance&#10;&#10;Dashboards:&#10;- Admin Dashboard&#10;- Faculty Dashboard&#10;- Mentor Dashboard&#10;- Student Dashboard&#10;&#10;Additional:&#10;- Swagger Integration&#10;- H2 Database Configuration&#10;- Repository Enhancements&#10;&#10;Tested:&#10;- CRUD APIs&#10;- Dashboard APIs&#10;- Swagger UI&#10;- H2 Console">
+      <option name="closed" value="true" />
+      <created>1781588518495</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1781588518495</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feat: complete LMS backend MVP business logic">
+      <option name="closed" value="true" />
+      <created>1781593932794</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1781593932794</updated>
+    </task>
+    <task id="LOCAL-00005" summary="changes in H2 DB for UI testing">
+      <option name="closed" value="true" />
+      <created>1781683485633</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1781683485633</updated>
+    </task>
+    <task id="LOCAL-00006" summary="CHange in Folder Structure">
+      <option name="closed" value="true" />
+      <created>1781683740121</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1781683740121</updated>
+    </task>
+    <task id="LOCAL-00007" summary="CHange in Folder Structure">
+      <option name="closed" value="true" />
+      <created>1781683996892</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1781683996892</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Completed LMS backend MVP core modules&#10;&#10;Modules:&#10;- User&#10;- Faculty&#10;- Mentor&#10;- Student&#10;- Course&#10;- Batch&#10;- Module&#10;- StudentBatch&#10;- Notes&#10;- Assignment&#10;- Submission&#10;- ClassSession&#10;- Attendance&#10;&#10;Dashboards:&#10;- Admin Dashboard&#10;- Faculty Dashboard&#10;- Mentor Dashboard&#10;- Student Dashboard&#10;&#10;Additional:&#10;- Swagger Integration&#10;- H2 Database Configuration&#10;- Repository Enhancements&#10;&#10;Tested:&#10;- CRUD APIs&#10;- Dashboard APIs&#10;- Swagger UI&#10;- H2 Console" />
+    <MESSAGE value="feat: complete LMS backend MVP business logic" />
+    <MESSAGE value="changes in H2 DB for UI testing" />
+    <MESSAGE value="CHange in Folder Structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="CHange in Folder Structure" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/in/yuktisoftwares/dashboard/faculty/serviceImpl/FacultyDashboardServiceImpl.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

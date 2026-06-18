@@ -1,0 +1,5 @@
+export { StudentDashboard } from './pages/StudentDashboard'
+export { Notes } from './pages/Notes'
+export { Assignments } from './pages/Assignments'
+export { Submissions } from './pages/Submissions'
+export { Attendance } from './pages/Attendance'

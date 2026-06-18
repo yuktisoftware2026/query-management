@@ -1,0 +1,7 @@
+export { AdminDashboard } from './pages/AdminDashboard'
+export { Students } from './pages/Students'
+export { Faculty } from './pages/Faculty'
+export { Mentors } from './pages/Mentors'
+export { Courses } from './pages/Courses'
+export { Batches } from './pages/Batches'
+export { StudentBatch } from './pages/StudentBatch'

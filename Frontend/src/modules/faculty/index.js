@@ -1,0 +1,7 @@
+export { FacultyDashboard } from './pages/FacultyDashboard'
+export { Modules } from './pages/Modules'
+export { Notes } from './pages/Notes'
+export { Assignments } from './pages/Assignments'
+export { Submissions } from './pages/Submissions'
+export { Sessions } from './pages/Sessions'
+export { Attendance } from './pages/Attendance'
